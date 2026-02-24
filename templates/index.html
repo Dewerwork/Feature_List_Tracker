@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Floating particles background -->
+    <div id="particles" class="particles" aria-hidden="true"></div>
+
+    <!-- Celebration overlay -->
+    <div id="celebration" class="celebration hidden" aria-hidden="true">
+        <div id="confetti-container"></div>
+        <div class="celebration-message">
+            <div class="celebration-sparkle">&#10024;</div>
+            <div>
+                <h2>Awesome! &#127881;</h2>
+                <p>Feature completed!</p>
+            </div>
+        </div>
+        <div id="sparkle-ring"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-top">
+            <div class="header-title">
+                <div class="rocket-icon">&#128640;</div>
+                <h1 class="gradient-text">Feature Manager</h1>
+            </div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon-sun">&#9728;&#65039;</span>
+                <span class="theme-icon-moon">&#127769;</span>
+            </button>
+        </div>
+        <p class="header-subtitle">Manage your features with style! Drag, drop, and celebrate your progress &#127881;</p>
+    </header>
+
+    <main class="main-content">
+        <!-- Kanban Board -->
+        <section id="kanban-section" class="kanban-section">
+            <h2 class="section-title gradient-text-blue">&#128640; In Progress Features</h2>
+
+            <div id="kanban-empty" class="kanban-empty hidden">
+                <div class="empty-emoji">&#127919;</div>
+                <p class="empty-text">No features in progress yet</p>
+                <p class="empty-subtext">Move features from the backlog to start working! &#128170;</p>
+            </div>
+
+            <div id="kanban-columns" class="kanban-columns">
+                <div class="kanban-column column-todo" data-status="todo">
+                    <div class="column-header">
+                        <span class="column-emoji">&#128221;</span>
+                        <h3 class="column-title">To Do</h3>
+                        <span class="column-count" data-count="todo">0</span>
+                    </div>
+                    <div class="column-cards" id="cards-todo" data-status="todo">
+                        <div class="column-empty">Drag features here</div>
+                    </div>
+                </div>
+
+                <div class="kanban-column column-inprogress" data-status="inProgress">
+                    <div class="column-header">
+                        <span class="column-emoji">&#9889;</span>
+                        <h3 class="column-title">In Progress</h3>
+                        <span class="column-count" data-count="inProgress">0</span>
+                    </div>
+                    <div class="column-cards" id="cards-inProgress" data-status="inProgress">
+                        <div class="column-empty">Drag features here</div>
+                    </div>
+                </div>
+
+                <div class="kanban-column column-done" data-status="done">
+                    <div class="column-header">
+                        <span class="column-emoji">&#127881;</span>
+                        <h3 class="column-title">Done</h3>
+                        <span class="column-count" data-count="done">0</span>
+                    </div>
+                    <div class="column-cards" id="cards-done" data-status="done">
+                        <div class="column-empty">Drag features here</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Backlog -->
+        <section id="backlog-section" class="backlog-section">
+            <div class="backlog-header">
+                <h2 class="section-title gradient-text-indigo">&#128203; Feature Backlog</h2>
+                <button id="btn-add-feature" class="btn btn-primary">
+                    <span class="btn-icon">+</span>
+                    Add Feature
+                </button>
+            </div>
+
+            <!-- Add feature form -->
+            <div id="add-form" class="add-form hidden">
+                <div class="form-card">
+                    <input type="text" id="add-title" class="form-input" placeholder="Feature title" autocomplete="off">
+                    <textarea id="add-description" class="form-textarea" placeholder="Feature description (optional)"></textarea>
+                    <div class="form-actions">
+                        <button id="btn-add-submit" class="btn btn-primary btn-sm">Add</button>
+                        <button id="btn-add-cancel" class="btn btn-outline btn-sm">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="backlog-empty" class="backlog-empty hidden">
+                <p class="empty-text">No features in backlog</p>
+                <p class="empty-subtext">Add your first feature to get started! &#128640;</p>
+            </div>
+
+            <div id="backlog-list" class="backlog-list"></div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
